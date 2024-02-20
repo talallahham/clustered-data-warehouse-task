@@ -29,24 +29,29 @@ The project utilizes Docker for containerization. Two Docker images are employed
 - To run the project, ensure all Maven dependencies are installed. Navigate to the `/src/resources` directory in the project directory using a terminal window. Verify that the `docker-compose.yml` file is present in this directory. Execute the command `docker-compose up` in the terminal. This command will create a Docker container containing the MongoDB and Spring Boot images, linking them together and launching the application on the pre-specified ports.
 
 - Alternatively, you can utilize the provided `Makefile` within the project directory. Ensure that the `Makefile` plugins are properly installed in your IDE for seamless integration. And also ensure that maven installed in your system. For the `Makefile` to work properly.
-  1. **Run the Application**: Start the application using Docker Compose by running:
+  1. **Build the Application**: Install/Build docker images for the application:
+    ```bash
+    make build
+    ```
+
+  2. **Run the Application**: Start the application using Docker Compose by running:
     ```bash
     make run
     ```
 
    This command will launch the application in a Docker container, as specified in the `docker-compose.yml` file.
 
-  2. **Stop the Application**: To stop the running containers, use the following command:
+  3. **Stop the Application**: To stop the running containers, use the following command:
     ```bash
     make stop
     ```
 
-  3. **Run Tests**: You can run tests using Maven by executing:
+  4. **Run Tests**: You can run tests using Maven by executing:
     ```bash
     make test
     ```
 
-  4. **Help Command**: To view available commands and their descriptions, use:
+  5. **Help Command**: To view available commands and their descriptions, use:
     ```bash
     make help
     ```
