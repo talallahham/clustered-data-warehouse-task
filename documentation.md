@@ -26,9 +26,9 @@ Testing is conducted using JUnit and Mockito to ensure the reliability and corre
 The project utilizes Docker for containerization. Two Docker images are employed: one for the MongoDB database and another for the Spring Boot application. These images are combined in the `docker-compose.yml` file, providing a convenient deployment solution.
 
 ## How to Run the Project
-- To run the project, ensure all Maven dependencies are installed. Navigate to the `/src/resources` directory in the project directory using a terminal window. Verify that the `docker-compose.yml` file is present in this directory. Execute the command `docker-compose up` in the terminal. This command will create a Docker container containing the MongoDB and Spring Boot images, linking them together and launching the application on the pre-specified ports.
 
-- Alternatively, you can utilize the provided `Makefile` within the project directory. Ensure that the `Makefile` plugins are properly installed in your IDE for seamless integration. And also ensure that maven installed in your system. For the `Makefile` to work properly.
+
+- You can utilize the provided `Makefile` within the project directory. Ensure that the `Makefile` plugins are properly installed in your IDE for seamless integration. And also ensure that maven installed in your system. For the `Makefile` to work properly.
   1. **Build the Application**: Install/Build docker images for the application:
     ```bash
     make build
