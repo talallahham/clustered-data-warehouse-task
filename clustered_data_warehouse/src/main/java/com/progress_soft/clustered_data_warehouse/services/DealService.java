@@ -24,19 +24,16 @@ public class DealService {
         // ID Check
         log.info("In 'validateDealData()' function: entering id check. For id={}", payload.getId());
         if(payload.getId() == null) {
-            log.info("In 'validateDealData()' function: id check failed, cause ID is null/blank. For id={}", payload.getId());
             throw new RuntimeException("ID must not be null");
         }
 
         try {
             long id = Long.parseLong(payload.getId());
             if(id < 0) {
-                log.info("In 'validateDealData()' function: id check failed, cause ID is negative. For id={}", payload.getId());
                 throw new Exception();
             }
 
         } catch (Exception e) {
-            log.info("In 'validateDealData()' function: id check failed, cause ID is not a number or negative. For id={}", payload.getId());
             throw new RuntimeException("Invalid ID. ID must be a positive integer number");
         }
         log.info("In 'validateDealData()' function: passing id check. For id={}", payload.getId());
@@ -45,12 +42,10 @@ public class DealService {
         // From currency ISO code Check
         log.info("In 'validateDealData()' function: entering fromCurrencyISO check. For fromCurrencyIsoCode={}", payload.getFromCurrencyIsoCode());
         if(payload.getFromCurrencyIsoCode() == null || payload.getFromCurrencyIsoCode().isEmpty()) {
-            log.info("In 'validateDealData()' function: fromCurrencyISO check failed, cause fromCurrencyISO is is null/blank. For fromCurrencyISO={}", payload.getFromCurrencyIsoCode());
             throw new RuntimeException("Invalid ISO code. (From currency ISO code must not be null)");
         }
 
         if(currencyCodes.getIsoCode(payload.getFromCurrencyIsoCode()).equals("false")) {
-            log.info("In 'validateDealData()' function: fromCurrencyISO check failed, cause fromCurrencyISO is is not valid ISO code. For fromCurrencyISO={}", payload.getFromCurrencyIsoCode());
             throw new RuntimeException("Invalid ISO code. (From currency ISO code, must be a valid ISO code)");
         }
         log.info("In 'validateDealData()' function: passing fromCurrencyISO check. For fromCurrencyISO={}", payload.getFromCurrencyIsoCode());
@@ -59,12 +54,10 @@ public class DealService {
         // To currency ISO code Check
         log.info("In 'validateDealData()' function: entering toCurrencyISO check. For toCurrencyISO={}", payload.getToCurrencyIsoCode());
         if(payload.getToCurrencyIsoCode() == null || payload.getToCurrencyIsoCode().isEmpty()) {
-            log.info("In 'validateDealData()' function: toCurrencyISO check failed, cause toCurrencyISO is is not valid ISO code. For toCurrencyISO={}", payload.getToCurrencyIsoCode());
             throw new RuntimeException("Invalid ISO code. (To currency ISO code must not be null)");
         }
 
         if(currencyCodes.getIsoCode(payload.getToCurrencyIsoCode()).equals("false")) {
-            log.info("In 'validateDealData()' function: toCurrencyISO check failed, cause toCurrencyISO is is not valid ISO code. For toCurrencyISO={}", payload.getToCurrencyIsoCode());
             throw new RuntimeException("Invalid ISO code. (To currency ISO code, must be a valid ISO code)");
         }
         log.info("In 'validateDealData()' function: passing toCurrencyISO check. For toCurrencyISO={}", payload.getToCurrencyIsoCode());
@@ -73,14 +66,12 @@ public class DealService {
         // Timestamp Check
         log.info("In 'validateDealData()' function: entering timestamp check. For timestamp={}", payload.getTimestamp());
         if(payload.getTimestamp() == null) {
-            log.info("In 'validateDealData()' function: timestamp failed, cause timestamp is null/blank. For timestamp={}", payload.getTimestamp());
             throw new RuntimeException("Timestamp must not be null");
         }
 
         try {
             LocalDateTime.parse(payload.getTimestamp());
         } catch (Exception e) {
-            log.info("In 'validateDealData()' function: timestamp failed, cause timestamp is not valid date that uses ISO8601 format. For timestamp={}", payload.getTimestamp());
             throw new RuntimeException("Invalid Timestamp. Use ISO8601 format for the timestamp: {YYYY}-{MM}-{DD}T{HOURS}:{MINUTES}:{SECONDS}.{MILLISECONDS}");
         }
         log.info("In 'validateDealData()' function: passing timestamp check. For timestamp={}", payload.getTimestamp());
@@ -89,19 +80,16 @@ public class DealService {
         // Deal amount Check
         log.info("In 'validateDealData()' function: entering dealAmount check. For dealAmount={}", payload.getDealAmount());
         if(payload.getDealAmount() == null) {
-            log.info("In 'validateDealData()' function: dealAmount check failed, cause dealAmount is null/blank. For dealAmount={}", payload.getDealAmount());
             throw new RuntimeException("Deal amount must not be null");
         }
 
         try {
             double dealAmount = Double.parseDouble(payload.getDealAmount());
             if(dealAmount < 0) {
-                log.info("In 'validateDealData()' function: dealAmount check failed, cause dealAmount is negative. For dealAmount={}", payload.getDealAmount());
                 throw new Exception();
             }
 
         } catch (Exception e) {
-            log.info("In 'validateDealData()' function: dealAmount check failed, cause dealAmount is not a number or negative. For id={}", payload.getDealAmount());
             throw new RuntimeException("Invalid Deal amount. Deal amount must be a positive float number");
         }
         log.info("In 'validateDealData()' function: passing dealAmount check. For dealAmount={}", payload.getDealAmount());
