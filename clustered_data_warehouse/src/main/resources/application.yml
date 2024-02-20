@@ -1,0 +1,7 @@
+spring:
+  data:
+    mongodb:
+      database: clustered_data_warehouse_db
+      port: 27017
+      host: mongodb
+

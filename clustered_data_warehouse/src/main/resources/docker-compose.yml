@@ -1,0 +1,14 @@
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - 27017:27017
+
+  progress-soft-task:
+    image: clustered-data-warehouse-project
+    container_name: progress-soft-task
+    ports:
+      - 8080:8080
+    links:
+      - mongodb
